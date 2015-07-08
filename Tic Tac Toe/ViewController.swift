@@ -10,6 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var labelsArray : [GridLabel!] = []
+    var xTurn = true
+    var nameBox1 = ""
+    var nameBox2 = ""
+    var totalTurns = 0
+    
     @IBOutlet weak var backgroundView: UIView!
     
     @IBOutlet weak var winnerLabel: UILabel!
@@ -27,11 +33,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var label8: GridLabel!
     @IBOutlet weak var label9: GridLabel!
     
-    var labelsArray : [GridLabel!] = []
-    var xTurn = true
-    var nameBox1 = ""
-    var nameBox2 = ""
-    var totalTurns = 0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +88,7 @@ class ViewController: UIViewController {
                     check()
                 }
                 
-                if (totalTurns % 9 == 0){
+                if (totalTurns == 9){
                     let noone = "Nobody"
                     winnerLabel.text = "Draw"
                     presentWinningAlert("\(noone)")
@@ -96,6 +98,7 @@ class ViewController: UIViewController {
     }
     
     func reset() {
+        totalTurns = 0
         winnerLabel.text = ""
         label1.text = ""
         label1.canTap = true
